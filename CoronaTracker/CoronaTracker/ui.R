@@ -1,6 +1,7 @@
 library(shiny)
 library(bs4Dash)
-
+source('package.R')
+source('data_source.R')
 
 bs4DashPage(
     navbar = bs4DashNavbar(),
@@ -8,38 +9,50 @@ bs4DashPage(
         bs4SidebarMenu(
             id = "sidebarMenu",
             bs4SidebarMenuItem(
-                text = "Tab 1",
-                tabName = "tab1"
+                text = "Home",
+                tabName = "home"
             ),
             bs4SidebarMenuItem(
-                text = "Tab 2",
-                tabName = "tab2"
+                text = "Analytics",
+                tabName = "analytics"
             )
         )),
     body = bs4DashBody(bs4TabItems(
-        bs4TabItem(
-            tabName = "tab1",fluidRow(
+        
+        # Home Tab
+        bs4TabItem(tabName = "home",fluidRow(
                 
-                bs4ValueBox(
-                    value = 13788540,
-                    subtitle = "Total Case",
-                    status = "primary",
-                    icon = "shopping-cart"
-                ),
-                bs4ValueBox(
-                    value = "588,820",
-                    subtitle = "Deaths",
-                    status = "danger",
-                    icon = "cogs"
-                ),
-                bs4ValueBox(
-                    value = "8,193,447",
-                    subtitle = "Recovered",
-                    status = "success",
-                    icon = "sliders"
-                ))
-        ),
-        bs4TabItem(tabName = "tab2",
+                bs4ValueBoxOutput("global_totalcase"),
+                bs4ValueBoxOutput("global_recovered"),
+                bs4ValueBoxOutput("global_death")),
+            fluidRow(
+                bs4TabCard(width = 12,
+                    id = "global_map",
+                    bs4TabPanel(
+                        tabName = "Global Total Case",
+                        active = TRUE,
+                        "global_totalcase_map"
+                    ),
+                    bs4TabPanel(
+                        tabName = "Global Recovered Case",
+                        active = FALSE,
+                        "global_recoveredcase_map"
+                    ),
+                    bs4TabPanel(
+                        tabName = "Global Death Case",
+                        active = FALSE,
+                        "global_deathcase_map"
+                    )
+                )
+            ),
+            fluidRow(bs4Card(title = "",
+                             closable = FALSE,
+                             collapsible = FALSE,
+                             dataTableOutput("global_case_table")))),
+        
+        # Analytics Tab
+        
+        bs4TabItem(tabName = "analytics",
                    fluidRow(
                        bs4Card(closable = FALSE,collapsible = FALSE,title = "Global Map",sliderInput("worldCaseMap","Number of observations:", 1, 100, 50)),
                        

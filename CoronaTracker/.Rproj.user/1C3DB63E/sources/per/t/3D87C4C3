@@ -1,0 +1,32 @@
+{
+    "id": "3D87C4C3",
+    "path": null,
+    "project_path": null,
+    "type": "r_dataframe",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1594914027354.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "expression": "corona_live_data",
+        "caption": "corona_live_data",
+        "totalObservations": "30641",
+        "displayedObservations": "30641",
+        "variables": "34",
+        "cacheKey": "1F83B790",
+        "object": "corona_live_data",
+        "environment": "",
+        "contentUrl": "grid_resource/gridviewer.html?env=&obj=corona_live_data&cache_key=1F83B790&max_cols=50",
+        "preview": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 7235443384777711648,
+    "encoding": "",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1594914027354,
+    "read_only": false,
+    "read_only_alternatives": []
+}

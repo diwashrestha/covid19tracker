@@ -1,0 +1,7 @@
+library(shiny)
+library(bs4Dash)
+
+# Define server logic required to draw a histogram
+shinyServer(function(input, output) {
+
+})
